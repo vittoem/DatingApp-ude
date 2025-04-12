@@ -1,6 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -10,6 +11,7 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent {
   private accountService = inject(AccountService); // Inject the AccountService to handle user registration.
+  private toastr = inject(ToastrService);
   // @Input() usersFromHome: any;
   usersFromHome = input.required<any>(); // input signal to receive data from the parent component.
   // @Output() cancelRegister = new EventEmitter();
@@ -24,7 +26,7 @@ export class RegisterComponent {
         this.cancel(); // Call the cancel method to emit the cancel event.
       },
       error: (error) => {
-        console.log(error);
+        this.toastr.error(error.error);
       },
     });
   }
