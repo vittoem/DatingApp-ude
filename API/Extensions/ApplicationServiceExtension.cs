@@ -1,6 +1,7 @@
 using API.Data;
 using API.Interfaces;
 using API.Services;
+using DatingApp.API.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions;
@@ -18,6 +19,10 @@ public static class ApplicationServiceExtension
 
 		services.AddCors();
 		services.AddScoped<ITokenService, TokenService>();
+		services.AddScoped<IUserRepository, UserRepository>();
+		// Registers profiles for AutoMapper
+		// This will scan the current assembly for any classes that inherit from Profile
+		services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 		return services;
 		}
