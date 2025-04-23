@@ -1,6 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RegisterComponent } from '../register/register.component';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -8,21 +7,16 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
   // New way to inject services in Angular.
-  http = inject(HttpClient);
   registerMode = false;
   users: any;
-
-  ngOnInit(): void {
-    this.getUsers();
-  }
 
   registerToggle() {
     this.registerMode = !this.registerMode; // Toggle the register mode.
   }
 
-  getUsers() {
+  /*getUsers() {
     // Observable is a stream of data that can be subscribed to. It's lazy by default.
     // It will only execute when subscribed to. The subscribe method is used to execute the observable.
     // No need to unsubscribe from http requests as it always completes.
@@ -37,10 +31,9 @@ export class HomeComponent implements OnInit {
         console.log('Request completed');
       },
     });
-  }
+  }*/
 
   cancelRegisterMode($event: boolean) {
-    console.log($event); // Log the event emitted from the child component.
     this.registerMode = $event; // Set the register mode based on the event emitted from the child component.
   }
 }

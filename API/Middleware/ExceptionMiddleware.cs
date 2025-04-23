@@ -2,7 +2,7 @@ using System.Net;
 using System.Text.Json;
 using DatingApp.API.Errors;
 
-namespace DatingApp.API.Middleware;
+namespace API.Middleware;
 
 	public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
 	{

@@ -1,6 +1,4 @@
-﻿using DatingApp.API.Extensions;
-
-namespace API.Entities;
+﻿namespace API.Entities;
 
 // Class will represent a table in the DB
 public class AppUser

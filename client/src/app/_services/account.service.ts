@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { map } from 'rxjs';
 import { User } from '../_models/user';
+import { environment } from '../../environments/environment';
 
 // Singleton created when the application starts.
 @Injectable({
@@ -9,7 +10,7 @@ import { User } from '../_models/user';
 })
 export class AccountService {
   private http = inject(HttpClient);
-  baseUrl = 'http://localhost:5028/api/';
+  baseUrl = environment.apiUrl;
   currentUser = signal<User | null>(null); // Signal to track the current user.
 
   login(model: any) {

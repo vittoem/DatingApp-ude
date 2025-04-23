@@ -46,6 +46,8 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
 
 	public async Task<MemberDto?> GetMemberAsync(string username)
 	{
+		// Use ProjectTo to map directly to MemberDto
+		// This will only select the fields needed for MemberDto, improving performance
 		return await context.Users.Where(x => x.UserName == username).ProjectTo<MemberDto>(mapper.ConfigurationProvider)
 		.SingleOrDefaultAsync();
 	}
