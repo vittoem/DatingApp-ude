@@ -13,9 +13,9 @@ export class MemberListComponent implements OnInit {
   memberService = inject(MembersService);
 
   ngOnInit(): void {
-    if (this.memberService.members().length === 0) {
-      this.loadMembers(); // Load members if the list is empty
-    }
+    // if (this.memberService.members().length === 0) {
+    //  this.loadMembers(); // Load members if the list is empty
+    // }
   }
 
   loadMembers() {
